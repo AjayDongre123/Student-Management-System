@@ -98,5 +98,9 @@ public class BranchService {
         List<Branch> all = branchRepository.findAll();
         return new ResponseEntity<>(new ListOfBranchResponse(true, "successfully get all branch", all), HttpStatus.OK);
     }
+
+    public void method1(){
+        System.out.println("hey!!");
+    }
 }
 
