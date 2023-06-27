@@ -75,7 +75,7 @@ public class DepartmentService {
         }
 
     }
-
+//this is another comment
     public ResponseEntity getDepartmentById(long departmentId) {
         if (departmentRepository.existsById(departmentId)) {
             Department department = departmentRepository.findById(departmentId).get();
