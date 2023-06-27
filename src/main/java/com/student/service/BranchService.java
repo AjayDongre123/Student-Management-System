@@ -17,7 +17,6 @@ import java.util.List;
 
 
 @Service
-
 public class BranchService {
     @Autowired
     private BranchRepository branchRepository;
@@ -48,7 +47,7 @@ public class BranchService {
             branchRepository.save(branch);
             branchRepository.findById(branch.getBranchId());
 
-
+//this is coment
             return new ResponseEntity<>("Successfully added branch", HttpStatus.OK);
         }
 
