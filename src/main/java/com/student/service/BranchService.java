@@ -47,7 +47,7 @@ public class BranchService {
             branchRepository.save(branch);
             branchRepository.findById(branch.getBranchId());
 
-//this is coment
+
             return new ResponseEntity<>("Successfully added branch", HttpStatus.OK);
         }
 
@@ -70,11 +70,11 @@ public class BranchService {
     public ResponseEntity deleteBranch(long branchId) {
         if (branchRepository.existsById(branchId)) {
             List<Student> listOfStudent = studentRepository.findByBranchId(branchId);
-            if(!listOfStudent.isEmpty()) {
+            if (!listOfStudent.isEmpty()) {
                 for (Student student : listOfStudent) {
                     studentRepository.deleteById(student.getStudentId());
                 }
-            }else{
+            } else {
                 return new ResponseEntity<>(new MessageResponse(false, "No student here.."), HttpStatus.NOT_FOUND);
             }
             branchRepository.deleteById(branchId);
@@ -89,18 +89,14 @@ public class BranchService {
     public ResponseEntity getByBranchId(long branchId) {
         if (branchRepository.existsById(branchId)) {
             Branch branch = branchRepository.findById(branchId).get();
-            return new ResponseEntity<>(new BranchObjectResponse(true,"Successfully get Data",branch),HttpStatus.OK);
+            return new ResponseEntity<>(new BranchObjectResponse(true, "Successfully get Data", branch), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new MessageResponse(false,"not found data"), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new MessageResponse(false, "not found data"), HttpStatus.NOT_FOUND);
     }
 
     public ResponseEntity branchList() {
         List<Branch> all = branchRepository.findAll();
         return new ResponseEntity<>(new ListOfBranchResponse(true, "successfully get all branch", all), HttpStatus.OK);
-    }
-
-    public void method1(){
-        System.out.println("hey!!");
     }
 }
 
