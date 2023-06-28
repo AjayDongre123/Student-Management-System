@@ -80,6 +80,15 @@ public class StudentController {
         return studentService.loginStudentByEmail(email, pwd);
     }
 
+    @GetMapping("/firstname")
+    public ResponseEntity getByFirstnameAndLastName(@RequestParam(name="firstName") String firstname,
+                                                    @RequestParam(name ="lastName") String lastName){
+        return studentService.getByFirstnameAndLastName(firstname,lastName);
+    }
+    @GetMapping("/SearchName")
+    public ResponseEntity search(@RequestParam(name = "search")String search){
+        return studentService.searchFirstName(search);
+    }
 
 }
 

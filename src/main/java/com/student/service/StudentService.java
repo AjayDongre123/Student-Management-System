@@ -210,6 +210,18 @@ public class StudentService {
             return new ResponseEntity(new MessageResponse(false, "Email id not registered!!"), HttpStatus.NOT_FOUND);
         }
     }
+    public ResponseEntity getByFirstnameAndLastName(String firstName,String lastName){
+        Student FirstNameAndLastName = studentRepository.findByFirstNameAndLastName(firstName, lastName);
+        return new ResponseEntity(FirstNameAndLastName,HttpStatus.OK);
+    }
+    public ResponseEntity searchFirstName(String search){
+        List<Student> byFirstNameContaining = studentRepository.findByFirstNameContaining(search);
+        if(!byFirstNameContaining.isEmpty()){
+            return new ResponseEntity(byFirstNameContaining,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(new MessageResponse(false,"no Avialable FirstName!!"),
+                HttpStatus.OK);
+    }
 
 }
 
