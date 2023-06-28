@@ -90,6 +90,16 @@ public class StudentController {
         return studentService.searchFirstName(search);
     }
 
+    @GetMapping("/SearchKeyword")
+    public ResponseEntity searchKeyword(@RequestParam(name = "search")String search){
+        return studentService.searchInFirstName(search);
+    }
+
+    @GetMapping("/studentByBranchId")
+    public ResponseEntity studentList(@RequestParam(name="branchId") long branchId){
+       return studentService.studentList(branchId);
+    }
+
 }
 
 

@@ -222,6 +222,18 @@ public class StudentService {
         return new ResponseEntity<>(new MessageResponse(false,"no Avialable FirstName!!"),
                 HttpStatus.OK);
     }
+    public  ResponseEntity searchInFirstName(String search){
+        List<Student> byKeyword = studentRepository.findByKeyword(search);
+        if(!byKeyword.isEmpty()){
+            return new ResponseEntity(byKeyword,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(new MessageResponse(false,"no Avialable FirstName!!"),
+                HttpStatus.OK);
+    }
+    public ResponseEntity studentList(long branchId){
+        List<Student> byBranchId = studentRepository.findsByBranchId(branchId);
+        return new ResponseEntity<>(byBranchId,HttpStatus.OK);
+    }
 
 }
 
