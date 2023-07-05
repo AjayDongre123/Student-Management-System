@@ -14,7 +14,7 @@ public class PurchaseCourses {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long purchaseId;
-    private String purhaseTransactionId;
+    private String purchaseTransactionId;
     private String courseName;
     private long courseId;
     private long studentId;
